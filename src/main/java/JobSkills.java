@@ -14,7 +14,6 @@ public class JobSkills {
     public static String DATASET = "data/job_skills.csv";
     public static String PROPERTIES = "config.properties";
     private static Connection conn;
-    private static Statement stmt;
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         // TODOd: load database properties
@@ -31,14 +30,14 @@ public class JobSkills {
         conn = DriverManager.getConnection(url,username, password);
     
         // Only for testing purposes
-         jdbcInit();
+        // jdbcInit();
     
         // TODOd: complete the data load
         splitCsv(System.getProperty("user.dir") + "/", DATASET);
     }
     
-    // Helper method for testing
-    private static void jdbcInit() throws SQLException {
+    // Only for testing purposes
+    /*private static void jdbcInit() throws SQLException {
             String[] SQL_COMMANDS = new String[] {
                 "drop database if exists jobs",
             
@@ -68,7 +67,7 @@ public class JobSkills {
             stmt = conn.createStatement();
             stmt.executeUpdate(SQL_COMMANDS[i]);
         }
-    }
+    }*/
     
     public static void splitCsv(String workingDir, String fileName) throws IOException, SQLException {
         File oldJobsFile = new File(workingDir + DATASET);

@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS JOBS;
-DROP USER IF EXISTS 'job_skills'@'%';
-DROP USER IF EXISTS 'job_skills_admin'@'%';
-CREATE DATABASE IF NOT EXISTS JOBS;
-USE JOBS;
+# DROP DATABASE IF EXISTS JOBS;
+# DROP USER IF EXISTS 'job_skills'@'%';
+# DROP USER IF EXISTS 'job_skills_admin'@'%';
+# CREATE DATABASE IF NOT EXISTS JOBS;
+# USE JOBS;
 
 create table jobs (
 	id int primary key,
