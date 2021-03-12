@@ -48,8 +48,21 @@ where s.name in ('sql', 'mysql')
 order by 1
 ;
 
--- Todo e) which skills "database analyst"-like positions have that "database admin"-like positions don't? 
---  In other words, select the jobs that require at least one skill that has "database analyst" somewhere in the skill description, but but do not require any skills that have "database admin" somewhere in the skill discription
+-- Todod e) which skills "database analyst"-like positions have that "database admin"-like positions don't? 
+select an.skills from(
+  select s.name as 'skills' from skills s
+	inner join job_skills js on s.id = js.skill_id
+	join jobs j on j.id = js.job_id
+	where title like '%database analyst%') an
+	where an.skills not in (
+	  select s.name as 'skills' from skills s
+		inner join job_skills js on s.id = js.skill_id
+		join jobs j on j.id = js.job_id
+		where title like '%database admin%')
+group by an.skills
+order by an.skills
+;
+
 
 -- Todod f) list the top 20 skills required by job positions having the word "database" in their titles.
 select s2.name as 'skills',count(js.skill_id) 'times skill occurred in job 
