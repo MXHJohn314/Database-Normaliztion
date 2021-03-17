@@ -2,7 +2,7 @@
  * CS3810 - Principles of Database Systems - Spring 2021
  * Instructor: Thyago Mota
  * Description: DB 02 - JobSkills
- * Student(s) Name(s):
+ * Student(s) Name(s): Malcolm Johnson, Adam Wojdyla, Matthew Hurt
  */
 
 import java.io.*;
@@ -28,33 +28,33 @@ public class JobSkills {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://" + server + ":3306/" + schema ;
         conn = DriverManager.getConnection(url,username, password);
-    
+
         // Only for testing purposes
         // jdbcInit();
-    
+
         // TODOd: complete the data load
         splitCsv(System.getProperty("user.dir") + "/", DATASET);
     }
-    
+
     // Only for testing purposes
     /*private static void jdbcInit() throws SQLException {
             String[] SQL_COMMANDS = new String[] {
                 "drop database if exists jobs",
-            
+
                 "create database if not exists jobs",
-            
+
                 "use jobs",
-            
+
                 "create table jobs (" +
                         "id int primary key," +
                         "title varchar(255) not null" +
                         ")",
-            
+
                 "create table skills (" +
                         "id int primary key," +
                         "name varchar(255) not null" +
                         ")",
-            
+
                 "create table job_skills (" +
                         "job_id int not null," +
                         "skill_id int not null," +
@@ -68,7 +68,7 @@ public class JobSkills {
             stmt.executeUpdate(SQL_COMMANDS[i]);
         }
     }*/
-    
+
     public static void splitCsv(String workingDir, String fileName) throws IOException, SQLException {
         File oldJobsFile = new File(workingDir + DATASET);
         Scanner sc = new Scanner(oldJobsFile);
@@ -105,11 +105,11 @@ public class JobSkills {
         conn.setAutoCommit(true);
     }
 
-    private static ResultSet query(String sql) throws SQLException {
+   /* private static ResultSet query(String sql) throws SQLException {
         return stmt.executeQuery(sql);
     }
 
     private static int update(String sql) throws SQLException {
         return stmt.executeUpdate(sql);
-    }
+    }*/
 }
